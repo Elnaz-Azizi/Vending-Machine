@@ -11,15 +11,19 @@ public final class Drink extends Product {
         this.carbo = carbo;
     }
 
+    public Drink(double price, String productName, String taste) {
+        super(price, productName);
+        this.taste = taste;
+    }
+
     @Override
     public String examine() {
-        return examine() + " , Taste: " + taste + " , carbo: " + carbo;
+        return "Product name: " + getProductName() + " , Taste: " + taste + " , carbo: " + carbo + " , Price: " + getPrice();
     }
 
 
     @Override
-    public String use() {
-        return null;
+    public String use() { return "Product name: " + getProductName() + " , Price: " + getPrice();
     }
 }
 
