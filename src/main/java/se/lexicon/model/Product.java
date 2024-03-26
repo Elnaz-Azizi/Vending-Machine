@@ -9,7 +9,7 @@ public abstract class Product extends Object {
     public Product(double price, String productName) {
         this.price = price;
         this.productName = productName;
-        this.id= getNextID();
+        this.id = getNextId();
 
     }
 
@@ -33,4 +33,8 @@ public abstract class Product extends Object {
         if (productName == null) throw new IllegalArgumentException("productName is null");
         this.productName = productName;
     }
+
+    public abstract String examine();
+
+    public abstract String use();
 }
