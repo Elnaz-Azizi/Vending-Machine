@@ -17,6 +17,10 @@ public class App {
         Product[] products = {apple, cola, chips, chokolad};
 
         VendingMachineImpl vendingMachine1 = new VendingMachineImpl(products);
+
+        System.out.println(Arrays.toString(vendingMachine1.getProducts()));
+
+
         vendingMachine1.addCurrency(10);
         System.out.println(vendingMachine1.getBalance()); // 10
         vendingMachine1.addCurrency(5);
@@ -24,7 +28,11 @@ public class App {
 
         System.out.println(Arrays.toString(vendingMachine1.getProducts()));
 
-        // call request method 4
+        // call request method 1
+        vendingMachine1.request(2);
+        System.out.println(vendingMachine1.getBalance());
+        System.out.println(vendingMachine1.getDescription(2));
+
 
 
     }

@@ -11,7 +11,7 @@ public final class Candy extends Product{
         this.type = type;
     }
     public String examine() {
-        return "Product name: " + getProductName() + " , Taste: " + taste + " Type: " + type + " Price: " + getPrice();
+        return "Product ID " + getId() + " , Name: " + getProductName() + " , Taste: " + taste + " Type: " + type + " Price: " + getPrice();
     }
 
 

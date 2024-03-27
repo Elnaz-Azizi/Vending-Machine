@@ -18,7 +18,7 @@ public final class Drink extends Product {
 
     @Override
     public String examine() {
-        return "Product ID" + getProductName() + " , Name: " + getProductName() + " , Taste: " + taste + " , carbo: " + carbo + " , Price: " + getPrice();
+        return "Product ID " + getId() + " , Name: " + getProductName() + " , Taste: " + taste + " , carbo: " + carbo + " , Price: " + getPrice();
     }
 
 

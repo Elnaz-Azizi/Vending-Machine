@@ -11,7 +11,7 @@ private String taste;
     }
 
     public String examine() {
-        return "Product name: " + getProductName() + " , Taste: " + taste + " Type: " + type + " Price: " + type.getPrice();
+        return "Product ID " + getId() + " , Name: " + getProductName() + " , Taste: " + taste + " Type: " + type + " Price: " + type.getPrice();
     }
 
 
