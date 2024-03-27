@@ -18,12 +18,13 @@ public final class Drink extends Product {
 
     @Override
     public String examine() {
-        return "Product name: " + getProductName() + " , Taste: " + taste + " , carbo: " + carbo + " , Price: " + getPrice();
+        return "Product ID" + getProductName() + " , Name: " + getProductName() + " , Taste: " + taste + " , carbo: " + carbo + " , Price: " + getPrice();
     }
 
 
     @Override
-    public String use() { return "Product name: " + getProductName() + " , Price: " + getPrice();
+    public String use() {
+        return "Product name: " + getProductName() + " , Price: " + getPrice();
     }
 }
 
