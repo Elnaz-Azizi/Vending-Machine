@@ -9,19 +9,18 @@ import java.util.Arrays;
  */
 public class App {
     public static void main(String[] args) {
-        Drink apple = new Drink(10, "Water", "Lemon taste", true); // 1
+        Drink water = new Drink(20, "Water", "Sweet", true);
         Drink cola = new Drink(10, "Cola", "Lemon taste"); // 2
-        Candy chokolad = new Candy(20, "Kinder Kids", CandyTaste.SWEET, CandyType.CHOKOLAD); // 3
-        Snack chips = new Snack(20, "Chitoz", SnackType.CHIPS, "Salty"); // 4
+        Candy chokolad = new Candy(CandyTaste.SWEET, 10, CandyType.CHOKOLAD, "Kinder");
+        Snack chips = new Snack(SnackType.CHIPS, "Salty", "Kinder");
 
-        Product[] products = {apple, cola, chips, chokolad};
-
+        IProduct[] products = {water, cola, chokolad, chips};
         VendingMachineImpl vendingMachine1 = new VendingMachineImpl(products);
 
         System.out.println(Arrays.toString(vendingMachine1.getProducts()));
 
 
-        vendingMachine1.addCurrency(10);
+        vendingMachine1.addCurrencyNew(10);
         System.out.println(vendingMachine1.getBalance()); // 10
         vendingMachine1.addCurrency(5);
         System.out.println(vendingMachine1.getBalance()); // 15
@@ -29,10 +28,9 @@ public class App {
         System.out.println(Arrays.toString(vendingMachine1.getProducts()));
 
         // call request method 1
-        vendingMachine1.request(2);
+        vendingMachine1.request(3);
         System.out.println(vendingMachine1.getBalance());
-        System.out.println(vendingMachine1.getDescription(2));
-
+        System.out.println(vendingMachine1.getDescription(3));
 
 
     }

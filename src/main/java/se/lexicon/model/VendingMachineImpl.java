@@ -1,23 +1,16 @@
 package se.lexicon.model;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 public class VendingMachineImpl implements IVendingMachine {
-    private Product[] products; // {apple, cola, chips, chokolad}
-    private int depositPool; // 0
+    private IProduct[] products;
+    private int depositPool;
     private static final int[] VALID_AMOUNTS = {1, 2, 5, 10, 20, 50, 100, 200, 500, 1000};
 
-    public VendingMachineImpl(Product[] products) {
+    public VendingMachineImpl(IProduct[] products) {
         this.products = products;
     }
 
     @Override
-    public void addCurrency(double amount) { // 10
-        // validate the amount that should be in the array
-        // yes-> add to depositPool
-        // No -< throw error with a proper message
-        //boolean isValid = false;
+    public void addCurrency(double amount) {
         for (int validAmount : VALID_AMOUNTS) {
             if (validAmount == amount) {
                 depositPool += amount;
@@ -25,7 +18,23 @@ public class VendingMachineImpl implements IVendingMachine {
                 break;
             }
         }
-        //if (!isValid) throw new IllegalArgumentException("invalid amount");
+
+    }
+
+    public void addCurrencyNew(double amount) {
+        boolean isValid = false;
+
+        for (Currency validCurrency : Currency.values()) {
+            if (validCurrency.getAmount() == amount) {
+                depositPool += amount;
+                isValid = true;
+                break;
+            }
+        }
+
+        if (!isValid) {
+            throw new IllegalArgumentException("Invalid amount");
+        }
 
     }
 
@@ -36,9 +45,9 @@ public class VendingMachineImpl implements IVendingMachine {
     }
 
     @Override
-    public Product request(int id) {
+    public IProduct request(int id) {
         // Iterate over the array of products
-        for (Product product : products) {
+        for (IProduct product : products) {
             // Check if the product exists and if its ID matches the requested ID
             if (product != null && product.getId() == id) {
                 // Check if the product price is less than or equal to the depositPool
@@ -67,25 +76,25 @@ public class VendingMachineImpl implements IVendingMachine {
 
     @Override
     public String getDescription(int id) {
-        for (Product product : products) {
-            if (product != null && product.getId()==id) {
+        for (IProduct product : products) {
+            if (product != null && product.getId() == id) {
                 return product.examine();
             }
         }
-            return "Product with ID" + id + "not found";
-
-        }
-
-        @Override
-        public String[] getProducts () {
-            String[] productsStr = new String[products.length]; // [null, null null]
-            for (int i = 0; i < products.length; i++) {
-                String productDescription = products[i].examine();
-                productsStr[i] = productDescription;
-            }
-            return productsStr;
-        }
-
+        return "Product with ID" + id + "not found";
 
     }
+
+    @Override
+    public String[] getProducts() {
+        String[] productsStr = new String[products.length]; // [null, null null]
+        for (int i = 0; i < products.length; i++) {
+            String productDescription = products[i].examine();
+            productsStr[i] = productDescription;
+        }
+        return productsStr;
+    }
+
+
+}
 

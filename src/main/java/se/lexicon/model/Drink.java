@@ -1,18 +1,26 @@
 package se.lexicon.model;
 
-public final class Drink extends Product {
+public final class Drink implements IProduct {
 
     private String taste;
     private boolean carbo;
+    private String productName;
+    private double price;
+    private int id;
+
 
     public Drink(double price, String productName, String taste, boolean carbo) {
-        super(price, productName);
+        setPrice(price);
+        setProductName(productName);
+        this.id = ProductIdSequencer.nextId();
         this.taste = taste;
         this.carbo = carbo;
     }
 
     public Drink(double price, String productName, String taste) {
-        super(price, productName);
+        setPrice(price);
+        setProductName(productName);
+        this.id = ProductIdSequencer.nextId();
         this.taste = taste;
     }
 
@@ -26,5 +34,32 @@ public final class Drink extends Product {
     public String use() {
         return "Product name: " + getProductName() + " , Price: " + getPrice();
     }
+
+    @Override
+    public int getId() {
+        return this.id;
+    }
+
+    @Override
+    public String getProductName() {
+        return productName;
+    }
+
+    @Override
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    @Override
+    public double getPrice() {
+        return price;
+    }
+
+    @Override
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+
 }
 
